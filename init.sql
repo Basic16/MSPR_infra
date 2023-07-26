@@ -166,22 +166,6 @@ ALTER TABLE public.customers_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.customers_id_seq OWNED BY public.customers.id;
 
-
---
--- TOC entry 220 (class 1259 OID 16403)
--- Name: details; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.details (
-    id integer NOT NULL,
-    price numeric(10,2),
-    description text,
-    color character varying(50)
-);
-
-
-ALTER TABLE public.details OWNER TO postgres;
-
 --
 -- TOC entry 221 (class 1259 OID 16408)
 -- Name: orders; Type: TABLE; Schema: public; Owner: postgres
@@ -460,17 +444,6 @@ INSERT INTO public.customers VALUES (1, '2023-02-19 15:26:38.45', 'Jessica Grady
 
 
 --
--- TOC entry 3423 (class 0 OID 16403)
--- Dependencies: 220
--- Data for Name: details; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.details VALUES (1, 921.00, 'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four-wheel drive', 'cyan');
-INSERT INTO public.details VALUES (2, 662.00, 'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals', 'violet');
-INSERT INTO public.details VALUES (3, 680.00, 'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive', 'black');
-
-
---
 -- TOC entry 3424 (class 0 OID 16408)
 -- Dependencies: 221
 -- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -630,15 +603,6 @@ ALTER TABLE ONLY public.customers
 
 
 --
--- TOC entry 3255 (class 2606 OID 16440)
--- Name: details details_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.details
-    ADD CONSTRAINT details_pkey PRIMARY KEY (id);
-
-
---
 -- TOC entry 3257 (class 2606 OID 16442)
 -- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
@@ -752,7 +716,7 @@ ALTER TABLE ONLY public.orders
 --
 
 ALTER TABLE ONLY public.products
-    ADD CONSTRAINT products_details_id_fkey FOREIGN KEY (details_id) REFERENCES public.details(id);
+    ADD CONSTRAINT products_details_id_fkey FOREIGN KEY (details_id) REFERENCES public.product_details(id);
 
 
 -- Completed on 2023-07-26 08:02:59 UTC
